@@ -1,0 +1,62 @@
+[
+  {
+    "Feature Id": "Contract",
+    "Importances": 25.23104831967187
+  },
+  {
+    "Feature Id": "InternetService",
+    "Importances": 17.1246904245784
+  },
+  {
+    "Feature Id": "tenure",
+    "Importances": 12.849050360982117
+  },
+  {
+    "Feature Id": "TotalCharges",
+    "Importances": 7.577591185530617
+  },
+  {
+    "Feature Id": "TechSupport_OnlineSecurity",
+    "Importances": 6.702072035264275
+  },
+  {
+    "Feature Id": "PaymentMethod",
+    "Importances": 6.526127802263115
+  },
+  {
+    "Feature Id": "MonthlyCharges",
+    "Importances": 6.325144289205716
+  },
+  {
+    "Feature Id": "PaperlessBilling",
+    "Importances": 3.06060948924918
+  },
+  {
+    "Feature Id": "StreamingMovies",
+    "Importances": 3.0537444655014614
+  },
+  {
+    "Feature Id": "OnlineBackup",
+    "Importances": 1.9838379727233308
+  },
+  {
+    "Feature Id": "PhoneService",
+    "Importances": 1.8540246768033142
+  },
+  {
+    "Feature Id": "OnlineSecurity",
+    "Importances": 1.3482810074441933
+  },
+  {
+    "Feature Id": "StreamingTV",
+    "Importances": 1.3178879039545939
+  },
+  {
+    "Feature Id": "MultipleLines",
+    "Importances": 1.151378638061673
+  },
+  {
+    "Feature Id": "Dependents",
+    "Importances": 0.865198689830649
+  }
+]
