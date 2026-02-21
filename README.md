@@ -2,8 +2,7 @@
 
 A complete end-to-end Machine Learning & MLOps project to predict customer churn using CatBoost, with full lifecycle management including MLflow tracking, model registry, FastAPI deployment, and Streamlit dashboard visualization.
 
-This project is designed from a Production-Ready ML Engineer perspective, focusing on scalability, reproducibility, monitoring, and real-world deployment standards.
-
+This project is designed with a Data Scientist / ML Engineer mindset, focusing on reproducibility, scalability, and production readiness.
 ---
 
 ## 🚀 Project Overview
@@ -288,7 +287,7 @@ streamlit run app.py
 ## 🎯 Production-Ready Highlights
 
 ✔ End-to-End ML Pipeline  
-✔ Full MLOps Lifecycle  
+✔ Full MLflow Life Cycle ----> MLOps  
 ✔ Model Registry & Promotion  
 ✔ API Security & Rate Limiting  
 ✔ Database Logging  
@@ -300,8 +299,10 @@ streamlit run app.py
 
 ## 👩‍💻 Author
 
-Machine Learning Engineer  
-Customer Retention & Predictive Analytics Focus  
+👨‍💻 Author
+Youssef Mahmoud Faculty of Computers & Information Aspiring Data Scientist / ML Engineer
+
+URL Linked in : [https://www.linkedin.com/in/youssef-mahmoud-63b243361?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKBSoRAFOSyucvi6vDlDfbg%3D%3D] ⭐ If you like this project, consider giving it a star on GitHub!
 
 ---
 
