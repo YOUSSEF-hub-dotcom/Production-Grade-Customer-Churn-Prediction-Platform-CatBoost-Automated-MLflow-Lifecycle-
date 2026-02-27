@@ -1,4 +1,4 @@
-# 📉 Telco Customer Churn Prediction Project
+# 📉 Production-Grade-Customer-Churn-Prediction-Platform-CatBoost-Automated-MLflow-Lifecycle-
 
 A complete end-to-end Machine Learning & MLOps project to predict customer churn using CatBoost, with full lifecycle management including MLflow tracking, model registry, FastAPI deployment, and Streamlit dashboard visualization.
 
@@ -209,7 +209,7 @@ Features:
 
 Project Name:
 ```
-Telco_Churn_Prediction
+TProduction-Grade-Customer-Churn-Prediction-Platform-CatBoost-Automated-MLflow-Lifecycle-
 ```
 
 Supports parameter tuning:
