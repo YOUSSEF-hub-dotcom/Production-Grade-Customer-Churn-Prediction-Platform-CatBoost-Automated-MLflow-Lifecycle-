@@ -30,11 +30,39 @@ The system includes:
 ---
 
 ## 🗂 Project Architecture
+User
+ ↓
+Streamlit Dashboard
+ ↓
+FastAPI API
+ ↓
+MLflow Registered Model
+ ↓
+CatBoost Model
+ ↓
+Database Logging
 
 ```
 Data → Cleaning → EDA → Feature Engineering → Model Training → 
 Threshold Optimization → MLflow Tracking → Model Registry → 
 FastAPI API → Database Logging → Streamlit Dashboard
+
+project/
+│
+├── data_pipeline.py
+├── basic_eda.py
+├── advanced_eda.py
+├── model.py
+├── mlflow_lifecycle.py
+│
+├── api.py
+├── app.py
+│
+├── MLproject
+├── conda.yaml
+│
+└── README.md
+
 ```
 
 ---
