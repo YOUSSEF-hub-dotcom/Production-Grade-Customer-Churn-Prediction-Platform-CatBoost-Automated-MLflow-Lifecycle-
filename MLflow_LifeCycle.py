@@ -15,7 +15,7 @@ from sklearn.metrics import (
 from sklearn.calibration import calibration_curve
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MLflow")
 
 def run_mlflow_tracking(results):
 
@@ -228,13 +228,13 @@ def run_mlflow_tracking(results):
                 archive_existing_versions=True
             )
             logger.info(
-                f"🚀 Model version {version} passed Quality Gate (AUC: {auc_score:.2f}, Recall: {report_dict['1']['recall']:.2f})")
+                f" Model version {version} passed Quality Gate (AUC: {auc_score:.2f}, Recall: {report_dict['1']['recall']:.2f})")
         else:
             logger.warning(
-                f"⚠️ Quality Gate failed for version {version}. "
+                f" Quality Gate failed for version {version}. "
                 f"Metrics: AUC={auc_score:.2f} (Req: 0.80), Recall={report_dict['1']['recall']:.2f} (Req: 0.70)"
             )
 
-        logger.info(f"📦 Model: {model_name} | Version: {version}")
+        logger.info(f" Model: {model_name} | Version: {version}")
 
         return run_id
