@@ -19,7 +19,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s")
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("api")
 
 
 # DATABASE
@@ -78,10 +78,10 @@ class ErrorResponse(BaseModel):
 
 try:
     mlflow_model = mlflow.pyfunc.load_model(settings.MODEL_URI)
-    print(f"✅ MLflow Model Loaded from: {settings.MODEL_URI}")
+    print(f" MLflow Model Loaded from: {settings.MODEL_URI}")
 except Exception as e:
     mlflow_model = None
-    print(f"❌ Model Load Error: {e}")
+    print(f" Model Load Error: {e}")
 
 # Dependency
 
@@ -126,8 +126,8 @@ app.add_middleware(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,  # هيقرأ القائمة اللي حددناها في الـ env
-    allow_credentials=True,                 # مهم عشان الـ Tokens اللي عندك
+    allow_origins=settings.ALLOWED_ORIGINS, 
+    allow_credentials=True,                 
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
@@ -193,7 +193,7 @@ def predict_churn(
     start_time = time.time()
 
     if mlflow_model is None:
-        logger.error("❌ Model requested but not loaded")
+        logger.error(" Model requested but not loaded")
         raise HTTPException(status_code=503, detail="ML Model is not loaded or unavailable")
 
     try:
@@ -204,13 +204,12 @@ def predict_churn(
         try:
             result = mlflow_model.predict(df).iloc[0]
         except Exception as e:
-            logger.error(f"🔥 Inference Error: {str(e)}")
+            logger.error(f" Inference Error: {str(e)}")
             raise HTTPException(status_code=422, detail=f"Model Inference Error: {str(e)}")
 
         churn_pred = int(result["churn_prediction"])
         churn_prob = float(result["churn_probability"])
 
-        # حفظ العملية في جدول التوقعات الرئيسي
         try:
             record = CustomerPrediction(
                 Contract=input_data.Contract,
@@ -227,16 +226,15 @@ def predict_churn(
             db.commit()
         except Exception as db_err:
             db.rollback()
-            logger.warning(f"⚠️ Database logging failed: {db_err}")
+            logger.warning(f"Database logging failed: {db_err}")
 
-        # حساب وقت التنفيذ
         execution_time = round(time.time() - start_time, 4)
 
         # إضافة مهمة خلفية للسجل العام
         log_summary = f"Contract: {input_data.Contract} | MonthlyCharges: {input_data.MonthlyCharges}"
         background_tasks.add_task(db_log_prediction, log_summary, churn_pred, churn_prob)
 
-        logger.info(f"✅ Prediction success | Prob: {churn_prob:.2f} | Time: {execution_time}s")
+        logger.info(f" Prediction success | Prob: {churn_prob:.2f} | Time: {execution_time}s")
 
         return {
             "churn_prediction": churn_pred,
@@ -248,7 +246,7 @@ def predict_churn(
     except HTTPException:
         raise
     except Exception as e:
-        logger.critical(f"💥 Unexpected Error: {str(e)}", exc_info=True)
+        logger.critical(f" Unexpected Error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal server error")
 
 
@@ -265,7 +263,7 @@ def db_log_prediction(input_info: str, prediction: int, probability: float):
         logger.info(f"Background Log Saved: Prediction={prediction} | Info={input_info}")
 
     except Exception as e:
-        logger.error(f"❌ Background Log Error: {str(e)}", exc_info=True)
+        logger.error(f" Background Log Error: {str(e)}", exc_info=True)
 
     finally:
         new_db.close()
@@ -300,4 +298,4 @@ def delete_prediction(prediction_id: int, db: Session = Depends(get_db)):
 
 @app.get("/")
 def health():
-    return {"status": "API is running 🚀"}
+    return {"status": "API is running "}
