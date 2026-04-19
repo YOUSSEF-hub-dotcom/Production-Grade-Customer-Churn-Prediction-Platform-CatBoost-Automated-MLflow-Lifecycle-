@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("EDA_1")
 
 def basic_eda(df):
     logger.info("============ Exploratory Data Analysis (Basic) & Visualization ============")
