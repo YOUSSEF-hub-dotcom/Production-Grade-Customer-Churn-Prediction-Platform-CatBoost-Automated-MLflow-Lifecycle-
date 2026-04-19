@@ -8,7 +8,7 @@ import argparse
 import logging
 from logger_config import setup_logging
 setup_logging()
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("main")
 
 
 def main():
@@ -46,7 +46,7 @@ def main():
     run_mlflow_tracking(model_results)
 
     logger.info("=" * 60)
-    logger.info("        Project Completed Successfully! ✅        ")
+    logger.info("        Project Completed Successfully!       ")
     logger.info("=" * 60)
 
 
