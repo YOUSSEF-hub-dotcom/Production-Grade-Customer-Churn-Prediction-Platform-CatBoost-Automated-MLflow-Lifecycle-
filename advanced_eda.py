@@ -3,7 +3,7 @@ import seaborn as sns
 import pandas as pd
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("EDA_2")
 
 def advanced_eda(df):
     logger.info("============ Advanced Exploratory Data Analysis & Churn Insights ============")
