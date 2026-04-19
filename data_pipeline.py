@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("Data_Pipeline")
 
 def load_data(file_path):
     logger.info("Loading Dataset")
