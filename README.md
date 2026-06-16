@@ -250,7 +250,7 @@ Supports parameter tuning:
 
 ---
 
-## 📡 Observability (Logging & Monitoring)
+## 📡 Observability (Logging)
 
 ✔ Structured Logging  
 ✔ Background Database Logging  
