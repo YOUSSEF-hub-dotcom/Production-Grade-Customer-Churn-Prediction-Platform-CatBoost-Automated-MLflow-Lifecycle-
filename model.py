@@ -12,7 +12,6 @@ from sklearn.metrics import (
 )
 from sklearn.calibration import calibration_curve
 import logging
-
 logger = logging.getLogger("Model")
 
 def build_and_train_model(df, iterations, learning_rate, depth):
