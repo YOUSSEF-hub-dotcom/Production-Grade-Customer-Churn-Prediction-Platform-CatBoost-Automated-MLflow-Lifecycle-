@@ -35,20 +35,18 @@ def run_mlflow_tracking(results):
     params = results["params"]
 
     X_COLUMNS = [
-        "gender", "SeniorCitizen", "Partner", "Dependents",
-        "tenure", "PhoneService", "MultipleLines", "InternetService",
-        "OnlineSecurity", "OnlineBackup", "DeviceProtection",
-        "TechSupport", "StreamingTV", "StreamingMovies",
-        "Contract", "PaperlessBilling", "PaymentMethod",
-        "MonthlyCharges", "TotalCharges",
-        "NumServices", "TechSupport_OnlineSecurity"
+        'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 
+        'InternetService', 'OnlineSecurity', 'OnlineBackup', 
+        'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies',
+        'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges',
+        'NumServices', 'TechSupport_OnlineSecurity'
     ]
 
     CATEGORICAL_FEATURES = [
-        "gender", "Partner", "Dependents", "PhoneService", "MultipleLines",
-        "InternetService", "OnlineSecurity", "OnlineBackup", "DeviceProtection",
-        "TechSupport", "StreamingTV", "StreamingMovies", "Contract",
-        "PaperlessBilling", "PaymentMethod", "TechSupport_OnlineSecurity"
+        'Partner', 'Dependents', 'InternetService', 'OnlineSecurity', 
+        'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 
+        'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 
+        'TechSupport_OnlineSecurity'
     ]
 
     accuracy = accuracy_score(y_test, y_pred)
