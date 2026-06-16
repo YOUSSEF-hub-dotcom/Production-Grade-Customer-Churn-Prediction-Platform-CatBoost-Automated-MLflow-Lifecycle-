@@ -15,24 +15,23 @@ import logging
 
 logger = logging.getLogger("Model")
 
-def build_and_train_model(df,iterations, learning_rate, depth):
+def build_and_train_model(df, iterations, learning_rate, depth):
     logger.info(f"================ Building ML Model (Iter={iterations}, LR={learning_rate}, Depth={depth}) ===============")
 
+    # feature Selection
     X_COLUMNS = [
-        'gender', 'SeniorCitizen', 'Partner', 'Dependents',
-        'tenure', 'PhoneService', 'MultipleLines', 'InternetService',
-        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
-        'TechSupport', 'StreamingTV', 'StreamingMovies',
-        'Contract', 'PaperlessBilling', 'PaymentMethod',
-        'MonthlyCharges', 'TotalCharges',
+        'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 
+        'InternetService', 'OnlineSecurity', 'OnlineBackup', 
+        'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies',
+        'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges',
         'NumServices', 'TechSupport_OnlineSecurity'
     ]
 
     CATEGORICAL_FEATURES = [
-        'gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
-        'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
-        'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract',
-        'PaperlessBilling', 'PaymentMethod', 'TechSupport_OnlineSecurity'
+        'Partner', 'Dependents', 'InternetService', 'OnlineSecurity', 
+        'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 
+        'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 
+        'TechSupport_OnlineSecurity'
     ]
 
     X = df[X_COLUMNS]
