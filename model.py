@@ -16,8 +16,58 @@ import logging
 logger = logging.getLogger("Model")
 
 def build_and_train_model(df, iterations, learning_rate, depth):
-    logger.info(f"================ Building ML Model (Iter={iterations}, LR={learning_rate}, Depth={depth}) ===============")
+   logger.info(f"================ Building ML Model (Iter={iterations}, LR={learning_rate}, Depth={depth}) ===============")
+   
+    # Starting Skew & Outlier Treatment
+    logger.info("============ Starting Skew & Outlier Treatment ============")
+    
+    # 1. Skewness Analysis Before Treatment
+    cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
+    for col in cols:
+        skew_value = df[col].skew()
+        logger.info(f"Skewness of {col} before treatment: {skew_value:.4f}")
+        
+        sns.histplot(df[col], kde=True)
+        plt.title(f"Distribution of {col} Before Treatment Skew")
+        plt.show()
 
+    # 2. Apply Square Root Transformation to handle Moderately Skewed TotalCharges
+    logger.info("Applying Square Root Transformation to TotalCharges...")
+    df['TotalCharges'] = np.sqrt(df['TotalCharges']) 
+
+    treat_skew_TotalCharges = df['TotalCharges'].skew()
+    logger.info(f"Treatment Skew of TotalCharges (After Sqrt): {treat_skew_TotalCharges:.4f}")
+    
+    sns.histplot(df['TotalCharges'], kde=True)
+    plt.title("Distribution of TotalCharges After Treatment Skew (Sqrt)")
+    plt.show()
+
+    # 3. Outlier Detection using IQR Method
+    print(df[cols].describe().round(2))
+
+    for col in cols:
+        Q1 = df[col].quantile(0.25)
+        Q3 = df[col].quantile(0.75)
+        IQR = Q3 - Q1
+
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+
+        outliers = df[(df[col] < lower_bound) | (df[col] > upper_bound)]
+        logger.info(f"--- {col} Outlier Analysis ---")
+        logger.info(f"IQR: {IQR:.2f} | Lower Bound: {lower_bound:.2f} | Upper Bound: {upper_bound:.2f}")
+        logger.info(f"Number of Outliers Detected: {len(outliers)}\n")
+
+    # 4. Plot Boxplots to confirm Outliers are handled
+    plt.figure(figsize=(15, 5))
+    for i, col in enumerate(cols, 1):
+        plt.subplot(1, 3, i)
+        sns.boxplot(y=df[col], color='skyblue')
+        plt.title(f'Boxplot of {col} (Post-Treatment)')
+
+    plt.tight_layout()
+    plt.show()
+    
     # feature Selection
     X_COLUMNS = [
         'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 
