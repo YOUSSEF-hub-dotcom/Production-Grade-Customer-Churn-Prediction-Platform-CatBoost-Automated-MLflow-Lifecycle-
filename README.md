@@ -25,7 +25,7 @@ The system includes:
 ✔ Database Logging  
 ✔ Rate Limiting & JWT Support  
 ✔ Streamlit Dashboard  
-✔ Observability (Logging & Monitoring)
+✔ Observability (Logging)
 
 ---
 
